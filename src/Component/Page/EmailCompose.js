@@ -25,11 +25,16 @@ function EmailCompose() {
     senderemail:localStorage.getItem("email"),
     receivermail:recipient,
     subjectmail:subject,
-    body:editorState.getCurrentContent().getPlainText()
+    body:editorState.getCurrentContent().getPlainText(),
+    read:false
      }
 
      console.log(obj)
     dispatch(PostEmail(obj))
+   
+    setRecipient("")
+    setSubject("")
+    setEditorState("")
 
   }; 
 

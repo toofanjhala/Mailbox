@@ -4,12 +4,16 @@ const Emailslice=createSlice({
     name:"Email",
     initialState:{
         maildata:[],
+        unreadarray:[],
+        count:0
+        
        },
 reducers:{
     add(state,action){
         state.maildata= action.payload.maildata
+        state.count=action.payload.count
+        state.unreadarray=action.payload.unreadarray
     },
-    
 }
     })
 

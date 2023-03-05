@@ -15,6 +15,6 @@ export const Logout = () => {
     navigate("/")
   }
   return (
-    <Button variant='danger' onClick={logouthandler} style={{ position: "fixed", top: "0", right: "0", margin: "14px" }}>Logout</Button>
+    <Button variant='danger' onClick={logouthandler} style={{ position: "relative", top: "0", right: "0", margin: "14px" }}>Logout</Button>
    )
 }
