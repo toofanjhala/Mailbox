@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState, useRef } from 'react';
-//  import { Link } from 'react-router-dom';
 import { Header } from '../UI/Header';
 import classes from "./AuthenticationForm.module.css";
 import { useDispatch } from 'react-redux';
@@ -90,8 +89,8 @@ const AuthForm = () => {
     return (
         <>
             <Header />
-            <h2 className={classes.heading}>MailBox</h2>
-            <section className={classes.auth} >
+            <h2 className={classes.welcome} > MailBox Authentication</h2>
+              <section className={classes.auth} >
                 <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
                 <form>
                     <div className={classes.control}>
@@ -121,7 +120,6 @@ const AuthForm = () => {
                         {request ? <p> Request sending</p> : <button onClick={submithandler}>{isLogin ? 'Login' : 'Sign up'}</button>}
 
                     </div>
-                    {/* {isLogin && <Link to='#abc' style={{ color: "black" }}> Forgot password</Link>} */}
                 </form>
             </section>
             <div className={classes.actions}>

@@ -1,0 +1,10 @@
+.welcome{
+    padding-top:20px;
+    margin-top: 6rem;
+    align-items: center;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom:3rem;
+}

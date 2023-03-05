@@ -1,11 +1,18 @@
-.heading{
+.welcome{
+    padding-top:20px;
+    margin-top: 9rem;
+    align-items: center;
+    box-sizing: border-box;
     text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom:7rem;
 }
 
 .auth {
     margin: 2rem auto;
     width: 95%;
-    max-width: 25rem;
+    max-width: 50rem;
     border-radius: 10px;
     background-color:#bbe4e9;
     background: linear-gradient(to bottom, #00ffff 0%, #ff99ff 93%);
