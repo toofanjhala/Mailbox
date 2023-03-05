@@ -4,17 +4,12 @@ const Emailslice=createSlice({
     name:"Email",
     initialState:{
         maildata:[],
-        counter:0,
-        senderemailid:localStorage.getItem("email"),
-        
-},
+       },
 reducers:{
     add(state,action){
-        state.maildata=[action.payload , ...state.maildata]
+        state.maildata= action.payload.maildata
     },
-    addcount(state){
-        state.counter++
-    }
+    
 }
     })
 

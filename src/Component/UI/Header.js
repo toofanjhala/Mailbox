@@ -24,6 +24,11 @@ export const Header = () => {
                             Home
                         </NavLink>
                     </li>}
+                    {isLoggein && <li>
+                        <NavLink to="/inbox" className={classes.navbar__link} activeclassname={classes.active}>
+                            Inbox
+                        </NavLink>
+                    </li>}
                 </ul>
                 {isLoggein && <Logout />}
             </nav>

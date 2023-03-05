@@ -1,0 +1,35 @@
+.email-container {
+    position:relative;
+    top:9rem;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .email-container:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .email-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .email-subject {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .email-sender {
+    font-style: italic;
+  }
+  .composebutton{
+    position: relative;
+    top:8rem;
+    margin-left: 2rem;
+    font-size: larger;
+    margin-bottom:2rem;
+    
+  }

@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Home } from './Component/Page/Home';
 import { Route,Routes } from 'react-router-dom';
+import Inbox from './Component/Page/Inbox';
 
 function App() {
   const isAuthenticated=useSelector(state=>state.Auth.isLoggein)
@@ -15,6 +16,7 @@ function App() {
        {!isAuthenticated  && <Route path="/home" element={<AuthForm/>} /> }
        {isAuthenticated && <Route path="/" exact element={<Home />} /> }
        {isAuthenticated  && <Route path="/home" element={<Home />} /> }
+       {isAuthenticated  && <Route path="/inbox" element={<Inbox />} /> }
      </Routes>
     </BrowserRouter>
   );

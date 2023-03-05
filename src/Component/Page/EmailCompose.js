@@ -21,6 +21,7 @@ function EmailCompose() {
   const handleSubmit = (event) => {
     event.preventDefault();
    let obj={
+    
     senderemail:localStorage.getItem("email"),
     receivermail:recipient,
     subjectmail:subject,
