@@ -1,16 +1,17 @@
 import React from 'react';
 import { useState, useRef } from 'react';
- import { Link } from 'react-router-dom';
-// import { Header } from '../UI/Header';
+//  import { Link } from 'react-router-dom';
+import { Header } from '../UI/Header';
 import classes from "./AuthenticationForm.module.css";
 import { useDispatch } from 'react-redux';
 import { AuthAction } from '../../Store/AuthSlice';
+import { useNavigate } from 'react-router-dom';
 
 
 const AuthForm = () => {
 
     const dispatch = useDispatch()
-    //   const Navigate = useNavigate()
+      const Navigate = useNavigate()
 
     const emailref = useRef("")
     const passwordref = useRef("")
@@ -76,7 +77,7 @@ const AuthForm = () => {
                 }
 
             }).then((data) => {
-                // Navigate("/home")
+                Navigate("/home")
                 dispatch(AuthAction.login(data.idToken))
                 console.log("login")
                 localStorage.setItem("email", editedemail)
@@ -88,8 +89,8 @@ const AuthForm = () => {
     }
     return (
         <>
-            {/* <Header /> */}
-            <h2 className='heading'>Expense Tracker</h2>
+            <Header />
+            <h2 className={classes.heading}>MailBox</h2>
             <section className={classes.auth} >
                 <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
                 <form>

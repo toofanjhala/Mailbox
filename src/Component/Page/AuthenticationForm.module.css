@@ -1,4 +1,6 @@
-
+.heading{
+    text-align: center;
+}
 
 .auth {
     margin: 2rem auto;
@@ -6,6 +8,7 @@
     max-width: 25rem;
     border-radius: 10px;
     background-color:#bbe4e9;
+    background: linear-gradient(to bottom, #00ffff 0%, #ff99ff 93%);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 0.5rem;
     text-align: center;
@@ -58,30 +61,32 @@
     cursor: pointer;
     font: inherit;
     color: whitesmoke;
-    background-color: #25003e;
-    border: 1px solid #25003e;
+    background-color: #00cc99;
+    border: 1px solid #00cc99;
     border-radius: 4px;
     padding: 0.5rem 1.5rem;
   }
   
   .actions button:hover {
-    background-color:  #227eff;
-    border-color:  #227eff
+    background-color:#1f8451;
+    border-color:#339933
   }
   
   .actions .toggle {
     margin-top: 1rem;
     background-color: transparent;
     color: whitesmoke;
-    background-color:#25003e;
-    border: 1px solid #25003e;
+    font-weight: bolder;
+    background-color:#00cc99;
+    border: 2px solid #00cc99;
     border-radius: 4px;
     padding: 10px;
   }
   
   .actions .toggle:hover {
-    background-color:  #227eff;
-    color: whitesmoke;
+    background-color: #1f8451;
+    border: 2px solid #00cc99;
+    color:whitesmoke
   }
 
   .button{
