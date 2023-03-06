@@ -9,10 +9,20 @@ export function PostEmail(Obj) {
             const RecMail = Obj.receivermail.replace("@", "").replace(".", "");
             localStorage.setItem("receiver", RecMail)
             const response = await axios.post(`https://mailbox-e273f-default-rtdb.firebaseio.com/${RecMail}.json`, Obj);
-          
-            if (response.statusText!=="OK") {
+
+            if (response.statusText !== "OK") {
                 throw new Error('Sending data failed.');
             }
+
+            const email = localStorage.getItem("email").replace("@", "").replace(".", "");
+            const responsesec = await axios.post(`https://mailbox-e273f-default-rtdb.firebaseio.com/${email}.json`, Obj);
+            console.log(responsesec)
+
+            if (responsesec.statusText !== "OK") {
+                throw new Error('Sending data failed.');
+            }
+
+
         }
         try {
             await sendRequest()
@@ -40,7 +50,7 @@ export function GetEmail() {
             const responsedata = await fetchData()
             const responsearray = []
 
-            if(responsedata===null){
+            if (responsedata === null) {
                 dispatch(EmailAction.add({
                     maildata: [],
                     unreadarray: null,
@@ -58,10 +68,53 @@ export function GetEmail() {
             })
 
             dispatch(EmailAction.add({
-                maildata: responsearray ,
+                maildata: responsearray,
                 unreadarray: unread,
                 count: unread.length
             }))
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+
+export function SentGetEmail() {
+
+    return async (dispatch) => {
+
+        const SentfetchData = async () => {
+            const email = localStorage.getItem("email")
+            console.log("sent get request")
+            const response = await axios.get(`https://mailbox-e273f-default-rtdb.firebaseio.com/${email}.json`);
+            const responseObject = response.data
+            return responseObject
+        }
+
+        try {
+            const responsedata = await SentfetchData()
+            const responsearray = []
+
+            if (responsedata === null) {
+                dispatch(EmailAction.Sent({
+                    sendmaildata: [],
+                    sendcount:0
+                    
+                }))
+                return
+            }
+
+            Object.keys(responsedata).forEach(key => {
+                const newObj = { key: key,  ...responsedata[key] };
+                responsearray.push(newObj)
+            })
+           
+            console.log(responsearray)
+            dispatch(EmailAction.Sent({
+                sendmaildata:responsearray,
+                sendcount:responsearray.length
+                }))
 
         } catch (error) {
             console.log(error)
@@ -104,7 +157,7 @@ export function DeleteEmail(Obj, id) {
     return async (dispatch) => {
 
         const DeleteRequest = async () => {
-         
+
             const RecMail = Obj.receivermail.replace("@", "").replace(".", "");
             localStorage.setItem("receiver", RecMail)
             const response = await axios.delete(`https://mailbox-e273f-default-rtdb.firebaseio.com/${RecMail}/${id}.json`);
@@ -113,7 +166,7 @@ export function DeleteEmail(Obj, id) {
         }
         try {
             await DeleteRequest()
-            
+
         }
         catch (error) {
             console.log(error)

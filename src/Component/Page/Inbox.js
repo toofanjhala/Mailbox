@@ -26,10 +26,14 @@ function Inbox() {
 
   }, [count, dispatch]);
 
+  const emailaddress=localStorage.getItem("receiver")
+
+
 
   return (
     <>
       <Header />
+      <h2 className={classes.welcome}>Inbox of {emailaddress}</h2>
       <Button className={classes.composebutton} variant="info" onClick={composeHandler}>Compose</Button>
       <Button className={classes.composebutton} variant="danger">unread message  {count}</Button>
       {!showbox && <div>
