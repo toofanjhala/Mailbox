@@ -29,7 +29,7 @@ function EmailCompose() {
     read:false
      }
 
-     console.log(obj)
+   
     dispatch(PostEmail(obj))
    
     setRecipient("")

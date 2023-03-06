@@ -13,7 +13,7 @@
   
   .email-header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     margin-bottom: 10px;
   }
   
@@ -33,6 +33,15 @@
     margin-bottom:2rem;
     
   }
+
+ .button{
+  width:300px;
+  padding:5px;
+  position: relative;
+  left: 1300px;
+  justify-content:space-around;
+  margin-right: 5px;
+ }
 
  
   

@@ -14,6 +14,9 @@ reducers:{
         state.count=action.payload.count
         state.unreadarray=action.payload.unreadarray
     },
+    remove(state){
+        state.count--
+    }
 }
     })
 
