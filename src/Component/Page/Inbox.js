@@ -22,7 +22,15 @@ function Inbox() {
   }
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(GetEmail())
+    const intervalid=setInterval(()=>{
+      dispatch(GetEmail())
+    },1000)
+console.log("useeffect")
+    return(()=>{
+      
+      clearInterval(intervalid)
+    })
+   
 
   }, [count, dispatch]);
 
@@ -49,7 +57,7 @@ function Inbox() {
             <div className={classes.button}>
               <Button variant="danger" onClick={async() => {
                 await dispatch(DeleteEmail(email, email.key))
-                await dispatch(GetEmail())
+                // await dispatch(GetEmail())
               }}>Delete</Button>
               <span>  </span>
               <Button variant="success"onClick={async () => {
