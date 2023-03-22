@@ -10,28 +10,21 @@ import { SentGetEmail } from "../../Store/EmailAction";
 
 function Sent() {
   const count = useSelector((state) => state.Email.sendcount)
-
   const emails = useSelector((state) => state.Email.sendmaildata)
-  console.log(emails)
   const [showbox, setshowbox] = useState(false)
-
+  const dispatch = useDispatch()
+  const emailaddress=localStorage.getItem("email")
   
-const dispatch = useDispatch()
   useEffect(() => {
     dispatch(SentGetEmail())
-
-  }, [count, dispatch]);
+    }, [count, dispatch]);
 
   
   function composeHandler() {
     setshowbox(!showbox)
   }
 
-  const emailaddress=localStorage.getItem("email")
-
-
-
-  return (
+return (
     <>
       <Header />
       <h2 className={classes.welcome}>Sentbox of {emailaddress}</h2>

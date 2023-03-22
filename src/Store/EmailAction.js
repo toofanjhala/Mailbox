@@ -16,7 +16,7 @@ export function PostEmail(Obj) {
 
             const email = localStorage.getItem("email").replace("@", "").replace(".", "");
             const responsesec = await axios.post(`https://mailbox-e273f-default-rtdb.firebaseio.com/${email}.json`, Obj);
-            console.log(responsesec)
+           
 
             if (responsesec.statusText !== "OK") {
                 throw new Error('Sending data failed.');
@@ -40,7 +40,7 @@ export function GetEmail() {
 
         const fetchData = async () => {
             const RecMail = localStorage.getItem("receiver")
-            console.log("get request")
+          
             const response = await axios.get(`https://mailbox-e273f-default-rtdb.firebaseio.com/${RecMail}.json`);
             const responseObject = response.data
             return responseObject
@@ -86,7 +86,7 @@ export function SentGetEmail() {
 
         const SentfetchData = async () => {
             const email = localStorage.getItem("email")
-            console.log("sent get request")
+          
             const response = await axios.get(`https://mailbox-e273f-default-rtdb.firebaseio.com/${email}.json`);
             const responseObject = response.data
             return responseObject
@@ -110,7 +110,7 @@ export function SentGetEmail() {
                 responsearray.push(newObj)
             })
            
-            console.log(responsearray)
+           
             dispatch(EmailAction.Sent({
                 sendmaildata:responsearray,
                 sendcount:responsearray.length
@@ -128,7 +128,7 @@ export function PUTEmail(Obj, id) {
     return async (dispatch) => {
 
         const PutRequest = async () => {
-            console.log("put request")
+         
             const RecMail = Obj.receivermail.replace("@", "").replace(".", "");
             localStorage.setItem("receiver", RecMail)
             const response = await axios.put(`https://mailbox-e273f-default-rtdb.firebaseio.com/${RecMail}/${id}.json`, {
@@ -136,7 +136,10 @@ export function PUTEmail(Obj, id) {
                 read: true, total: true
             });
 
-            console.log(response)
+           
+            if (response.statusText !== "OK") {
+                throw new Error(' put request failed.');
+            }
         }
         try {
             await PutRequest()
@@ -161,8 +164,10 @@ export function DeleteEmail(Obj, id) {
             const RecMail = Obj.receivermail.replace("@", "").replace(".", "");
             localStorage.setItem("receiver", RecMail)
             const response = await axios.delete(`https://mailbox-e273f-default-rtdb.firebaseio.com/${RecMail}/${id}.json`);
-            console.log(response)
-            console.log("delete request")
+          
+            if (response.statusText !== "OK") {
+                throw new Error('deleting data failed.');
+            }
         }
         try {
             await DeleteRequest()

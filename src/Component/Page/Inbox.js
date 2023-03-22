@@ -11,34 +11,28 @@ import { PUTEmail, DeleteEmail } from "../../Store/EmailAction";
 
 
 function Inbox() {
-  const count = useSelector((state) => state.Email.count)
   const [showbox, setshowbox] = useState(false)
+  const dispatch = useDispatch()
 
+  const count = useSelector((state) => state.Email.count)
   const emails = useSelector((state) => state.Email.maildata)
+  const emailaddress = localStorage.getItem("receiver")
 
 
-  function composeHandler() {
+  useEffect(() => {
+    const intervalid = setInterval(() => {
+      dispatch(GetEmail())
+    }, 1000)
+
+    return (() => {
+      clearInterval(intervalid)
+    })}, [count, dispatch]);
+ 
+    function composeHandler() {
     setshowbox(!showbox)
   }
-  const dispatch = useDispatch()
-  useEffect(() => {
-    const intervalid=setInterval(()=>{
-      dispatch(GetEmail())
-    },1000)
-console.log("useeffect")
-    return(()=>{
-      
-      clearInterval(intervalid)
-    })
-   
-
-  }, [count, dispatch]);
-
-  const emailaddress=localStorage.getItem("receiver")
-
-
-
-  return (
+  
+ return (
     <>
       <Header />
       <h2 className={classes.welcome}>Inbox of {emailaddress}</h2>
@@ -55,14 +49,14 @@ console.log("useeffect")
             </div>
             <div className={classes["email-body"]}>{email.body}</div>
             <div className={classes.button}>
-              <Button variant="danger" onClick={async() => {
+              <Button variant="danger" onClick={async () => {
                 await dispatch(DeleteEmail(email, email.key))
                 // await dispatch(GetEmail())
               }}>Delete</Button>
               <span>  </span>
-              <Button variant="success"onClick={async () => {
-               await dispatch(PUTEmail(email, email.key))
-               
+              <Button variant="success" onClick={async () => {
+                await dispatch(PUTEmail(email, email.key))
+
               }}>Mark as read</Button> </div>
 
           </div>

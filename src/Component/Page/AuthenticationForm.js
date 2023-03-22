@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const AuthForm = () => {
 
     const dispatch = useDispatch()
-      const Navigate = useNavigate()
+    const Navigate = useNavigate()
 
     const emailref = useRef("")
     const passwordref = useRef("")
